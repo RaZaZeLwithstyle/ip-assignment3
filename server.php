@@ -16,6 +16,28 @@ $cleardb_username = $cleardb_url["user"];
 $cleardb_password = $cleardb_url["pass"];
 $cleardb_db       = substr($cleardb_url["path"],1);
 
+$db['default'] = array(
+    'dsn'    => '',
+    'hostname' => $cleardb_server,
+    'username' => $cleardb_username,
+    'password' => $cleardb_password,
+    'database' => $cleardb_db,
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
 $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db) or die("could not connect to database");
 
 if(isset($_POST['reg_user'])) {
