@@ -9,9 +9,14 @@ $email = "";
 
 $errors = array();
 
-//connect to SQLiteDatabase
+//connect to Heroku SQL database
+$cleardb_url      = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server   = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db       = substr($cleardb_url["path"],1);
 
-$db = mysqli_connect('localhost', 'root', '', 'assignment2') or die("could not connect to database");
+$db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db) or die("could not connect to database");
 
 if(isset($_POST['reg_user'])) {
 
